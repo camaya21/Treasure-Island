@@ -71,16 +71,17 @@ public class Treasure {
                     column = column + 1;
                 }
             }
-        }
 
-        board[row][column] = true;
-        updateBoard(board, treasure, tree, mound);
+            board[row][column] = true;
+            updateBoard(board, treasure, tree, mound);
 
-        if(treasure[row][column]){
-            System.out.println("Congratulations, you got the treasure!");
-            gameOver = true;
+            if(treasure[row][column]){
+                System.out.println("Congratulations, you got the treasure!");
+                gameOver = true;
+            }
         }
     }
+
 
     public static void updateBoard(boolean[][] upBoard, boolean[][] treasure, boolean[][] tree, boolean mound[][]) {
         System.out.print('\u000C');
@@ -105,5 +106,4 @@ public class Treasure {
             }
         }
     }
-
 }
