@@ -23,7 +23,7 @@ public class Treasure {
         }
 
         treasure[0][2] = true;
-        tree[1][2] = true;
+        tree[1][0] = true;
         tree[4][1] = true;
         mound[2][0] = true;
         mound[3][4] = true;
@@ -37,6 +37,7 @@ public class Treasure {
 
         while(gameOver == false){
             System.out.println();
+            System.out.printf("You are now at location (%d,%d)\n", row, column);
             System.out.println("Which way would you like to go - type up, down, left, or right");
             String direction = myObj.next();
             // row statements
