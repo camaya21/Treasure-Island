@@ -71,11 +71,15 @@ public class Treasure {
                 else {
                     column = column + 1;
                 }
+            } else if (direction.equals("quit")){
+                gameOver = true;
+                System.out.println("Play again next time!");
             }
 
             board[row][column] = true;
             updateBoard(board, treasure, tree, mound);
             
+            // Display message explaining what is in that location
             if(tree[row][column]){
                 System.out.println("There is a tree");
             } 
