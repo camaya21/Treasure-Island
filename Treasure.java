@@ -22,7 +22,7 @@ public class Treasure {
             }
         }
 
-        treasure[5][4] = true;
+        treasure[0][2] = true;
         tree[1][2] = true;
         tree[4][1] = true;
         mound[2][0] = true;
@@ -35,6 +35,75 @@ public class Treasure {
             }
         }
 
-        
+        while(gameOver == false){
+            System.out.println();
+            System.out.println("Which way would you like to go - type up, down, left, or right");
+            String direction = myObj.next();
+            // row statements
+            if (direction.equals("up")){
+                if (row == 0){
+                    System.out.println("You cannot go there because of the ocean");
+                }
+                else {
+                    row = row - 1;
+                }
+            } else if (direction.equals("down")){
+                if (row == 6){
+                    System.out.println("You cannot go there because of the ocean");
+                }
+                else {
+                    row = row + 1;
+                }
+            }
+            // column statements
+            if ((direction.equals("left"))){
+                if (column == 0){
+                    System.out.println("You cannot go there because of the ocean");
+                }
+                else {
+                    column = column - 1;
+                }
+            } else if (direction.equals("right")){
+                if (column == 6){
+                    System.out.println("You cannot go there because of the ocean");
+                }
+                else {
+                    column = column + 1;
+                }
+            }
+
+            board[row][column] = true;
+            updateBoard(board, treasure, tree, mound);
+
+            if(treasure[row][column]){
+                System.out.println("Congratulations, you got the treasure!");
+                gameOver = true;
+            }
+        }
+    }
+
+
+    public static void updateBoard(boolean[][] upBoard, boolean[][] treasure, boolean[][] tree, boolean mound[][]) {
+        System.out.print('\u000C');
+        for (int i = 0; i < 7; i++){
+            System.out.println();
+            for (int j = 0; j < 7; j++){
+                if(upBoard[i][j] == true && treasure[i][j] == true){
+                    System.out.print(" 🏆 ");
+                }
+                else if (upBoard[i][j] == true && tree[i][j] == true){
+                    System.out.print(" 🌲 ");
+                }
+                else if (upBoard[i][j] == true && mound[i][j] == true){
+                    System.out.print(" 🏜️ ");
+                }
+                else if (upBoard[i][j] == true && treasure [i][j] == false && tree [i][j] == false && mound [i][j] == false){
+                    System.out.print(" O ");
+                }
+                else {
+                    System.out.print(" ? ");
+                }
+            }
+        }
     }
 }
