@@ -12,7 +12,6 @@ public class Treasure {
         boolean gameOver = false;
         int row = 0;
         int column = 0;
-        int userPoints = 0;
 
         Scanner myObj = new Scanner(System.in);
 
@@ -22,11 +21,13 @@ public class Treasure {
             }
         }
 
-        treasure[0][2] = true;
+        treasure[6][4] = true;
         tree[1][0] = true;
-        tree[4][1] = true;
-        mound[2][0] = true;
-        mound[3][4] = true;
+        tree[2][4] = true;
+        tree [3][1] = true;
+        mound[1][5] = true;
+        mound[4][3] = true;
+        mound[5][5] = true;
         
         for (int i = 0; i < 7; i++){
             System.out.println();
@@ -40,7 +41,8 @@ public class Treasure {
             System.out.printf("You are now at location (%d,%d)\n", row, column);
             System.out.println("Which way would you like to go - type up, down, left, or right");
             String direction = myObj.next();
-            // row statements
+            
+            // row and column statements
             if (direction.equals("up")){
                 if (row == 0){
                     System.out.println("You cannot go there because of the ocean");
@@ -55,9 +57,7 @@ public class Treasure {
                 else {
                     row = row + 1;
                 }
-            }
-            // column statements
-            if ((direction.equals("left"))){
+            } else if ((direction.equals("left"))){
                 if (column == 0){
                     System.out.println("You cannot go there because of the ocean");
                 }
@@ -75,10 +75,19 @@ public class Treasure {
 
             board[row][column] = true;
             updateBoard(board, treasure, tree, mound);
-
-            if(treasure[row][column]){
+            
+            if(tree[row][column]){
+                System.out.println("There is a tree");
+            } 
+            else if (mound[row][column]){
+                System.out.println("There is a mound");
+            }
+            else if(treasure[row][column]){
                 System.out.println("Congratulations, you got the treasure!");
                 gameOver = true;
+            }
+            else {
+                System.out.println("Empty, move again!");
             }
         }
     }
