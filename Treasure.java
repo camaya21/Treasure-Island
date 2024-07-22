@@ -20,7 +20,7 @@ public class Treasure {
                 treasure[i][j] = false;
             }
         }
-
+        // Location of items
         treasure[6][4] = true;
         tree[1][0] = true;
         tree[2][4] = true;
@@ -28,7 +28,7 @@ public class Treasure {
         mound[1][5] = true;
         mound[4][3] = true;
         mound[5][5] = true;
-        
+        // Sets the for loop for the 2D array
         for (int i = 0; i < 7; i++){
             System.out.println();
             for (int j = 0; j< 7; j++){
@@ -96,7 +96,7 @@ public class Treasure {
         }
     }
 
-
+    // Update the board with either a tressure, tree, or mound. If nothing found then O.
     public static void updateBoard(boolean[][] upBoard, boolean[][] treasure, boolean[][] tree, boolean mound[][]) {
         System.out.print('\u000C');
         for (int i = 0; i < 7; i++){
